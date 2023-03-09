@@ -12,6 +12,9 @@ export const Router = () =>{
                     <li>
                         <Link to="/Buttons">Buttons</Link>
                     </li>
+                    <li>
+                        <Link to="/Counters">Counters</Link>
+                    </li>
                 </ul>
             </div>
             <Outlet/>
