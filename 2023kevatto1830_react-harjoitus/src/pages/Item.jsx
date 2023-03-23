@@ -5,6 +5,7 @@ export const Item=(props)=>{
         <div>
             <p>Title:{props.title}</p>
             <img src={props.img}/>
+            <p>Description: {props.description}</p>
         </div>
     );
 }
