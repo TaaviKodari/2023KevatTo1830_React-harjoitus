@@ -5,6 +5,14 @@ import { useState } from "react";
 export const List =()=>{
     const[content, setContent] = useState([]);
     const[inputValue, setInputValue] = useState('');
+    
+    const removeHandler = (removeIndex) =>{
+        const removeItem = content.filter((item,index)=>{
+            return  removeIndex !== index;
+        });
+        setContent(removeItem);
+    }
+    
     function clearList(){
         setContent([]);
     }
@@ -25,10 +33,14 @@ export const List =()=>{
                      required/> 
                    <input type="submit" value="Submit"/>
                     {
-                        content.map((item)=>(
+                        content.map((item, index)=>(
                             <ul>
                                 <li>
-                                    <h2>{item}</h2>
+                                    <h2 key={index}>{item}</h2>
+                                    <button
+                                    form="eri formi"
+                                    onClick={()=>removeHandler(index)} 
+                                    >Remove</button>
                                 </li>
                             </ul>
                         ))
