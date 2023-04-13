@@ -1,0 +1,28 @@
+.row{
+    display:flex;
+    flex-direction: row;
+}
+
+.square{
+    width:100px;
+    height: 100px;
+    font-size: 30px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    padding-bottom: 25px;
+    font-size: 30px;
+}
+
+.b-bottom-r{
+    border-right: 7px solid black;
+    border-bottom: 7px solid black;
+}
+
+.b-bottom{
+    border-bottom: 7px solid black;
+}
+
+.b.right{
+    border-right: 7px solid black;
+}
