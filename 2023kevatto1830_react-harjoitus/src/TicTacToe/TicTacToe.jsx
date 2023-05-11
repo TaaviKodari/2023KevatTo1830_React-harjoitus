@@ -15,11 +15,21 @@ export const TicTacToe =()=>{
         const winner = checkWinner();
         if(winner){
             setStatus(`Winner: ${winner}`);
+        }else if(!gameState.includes(''))
+        {
+            setStatus("it's a draw");
+        }else{
+            setStatus(`${isXTurn ? 'X' : 'O'}'s turn`);
         }
     },[gameState])
 
     const onSquareClick = (index) =>{
         let strings = Array.from(gameState);
+       
+        if(status.includes("Winner")){
+            return;
+        }
+       
         if(strings[index] !== '')
         {
             return;
@@ -54,9 +64,29 @@ export const TicTacToe =()=>{
 
     return(
         <div>
-            <h1>Tic-Tac-Toe</h1>
-            <Board gameState={gameState} onSquareClick={onSquareClick}/>
-            {status}
+            <div className="game">
+                <h1>Tic-Tac-Toe</h1>
+                <Board gameState={gameState} onSquareClick={onSquareClick}/>
+            
+                {!status.includes("Winner") && (
+                    <>
+                        <span>{status}</span> 
+                        <button onClick={()=>{
+                            setGameState(intialBoard);
+                            setIsXTurn(true);
+                        }}>Clear board</button>
+                    </>
+                )}
+                {status.includes("Winner") && (
+                <>
+                    <span style={{color:"green"}}>{status}</span> 
+                    <button style={{background:"lightgreen"}} onClick={()=>{
+                        setGameState(intialBoard);
+                        setIsXTurn(true);
+                    }}>Play again</button>
+                </>
+                )}
+            </div>
         </div>
     );
 }
